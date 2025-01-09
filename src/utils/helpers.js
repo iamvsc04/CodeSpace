@@ -1,15 +1,19 @@
 import {
-  getRedirectResult,
-  signInWithRedirect,
   GoogleAuthProvider,
+  signInWithPopup,
+  GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "../config/firebase.config";
-
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 export const signInWithGoogle = async () => {
-  await signInWithRedirect(auth, googleProvider).then((userCred) => {
-    console.log(userCred);
+  await signInWithPopup(auth, googleProvider).then((userCred) => {
+    window.location.reload();
+  });
+};
+export const signInWithGitHub = async () => {
+  await signInWithPopup(auth, githubProvider).then((userCred) => {
     window.location.reload();
   });
 };
