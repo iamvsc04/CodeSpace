@@ -6,7 +6,7 @@ const Spinner = () => {
       height={100}
       width={100}
       radius={5}
-      color="#4fa94d"
+      color="cyan"
       ariaLabel="ball-triangle-loading"
       wrapperStyle={{}}
       wrapperClass=""

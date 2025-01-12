@@ -5,9 +5,12 @@ import { motion } from "framer-motion";
 import { Link, Route, Routes } from "react-router-dom";
 import { Logo } from "../assets";
 import { Projects, SignUp } from "../container";
+import { useSelector } from "react-redux";
+import { UserProfileDetails } from "../components";
 const Home = () => {
   const [isSideMenu, setIsSideMenu] = useState(false);
-  const [user, setUser] = useState(null);
+  const user = useSelector((state) => state.user?.user);
+
   return (
     <>
       <div
@@ -16,7 +19,7 @@ const Home = () => {
         } min-h-screen max-h-screen relative bg-secondary px-3 py-6 flex flex-col items-center justify-start gap-4 transition-all duration-150 ease-in-out`}
       >
         <motion.div
-          whileTap={{ scale: 0.74 }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => setIsSideMenu(!isSideMenu)}
           className="w-8 h-8 bg-secondary rounded-tr-lg rounded-br-lg absolute -right-6  flex items-center justify-center cursor-pointer"
         >
@@ -76,7 +79,7 @@ const Home = () => {
               </Link>
             </motion.div>
           )}
-          {user && <div></div>}
+          {user && <UserProfileDetails />}
         </div>
         <div className="w-full">
           <Routes>
